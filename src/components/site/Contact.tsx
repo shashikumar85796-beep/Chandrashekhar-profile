@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Mail, Phone, MapPin, MessageCircle, Building2 } from "lucide-react";
+import { Mail, Phone, MapPin, MessageCircle, Building2, Youtube, Instagram, Linkedin, Facebook } from "lucide-react";
 import { toast } from "sonner";
 import { professor } from "@/data/professor";
 import { cn } from "@/lib/utils";
@@ -59,6 +59,7 @@ export function Contact() {
                 <div>
                   <p className="text-xs uppercase tracking-wider text-muted-foreground">Mobile / WhatsApp</p>
                   <p className="font-medium">{professor.phone}</p>
+                  <p className="font-medium">{professor.phone2}</p>
                   <a
                     href={professor.social.whatsapp}
                     target="_blank"
@@ -95,6 +96,30 @@ export function Contact() {
             <p className="text-sm text-muted-foreground italic">
               I typically respond within a few hours.
             </p>
+
+            {/* Social links */}
+            <div>
+              <p className="text-xs uppercase tracking-wider text-muted-foreground mb-3">Follow & Connect</p>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  { Icon: Youtube,   href: professor.social.youtube,   label: "YouTube",   color: "hover:bg-[#FF0000] hover:border-[#FF0000]" },
+                  { Icon: Instagram, href: professor.social.instagram, label: "Instagram", color: "hover:bg-[#E1306C] hover:border-[#E1306C]" },
+                  { Icon: Linkedin,  href: professor.social.linkedin,  label: "LinkedIn",  color: "hover:bg-[#0A66C2] hover:border-[#0A66C2]" },
+                  { Icon: Facebook,  href: professor.social.facebook,  label: "Facebook",  color: "hover:bg-[#1877F2] hover:border-[#1877F2]" },
+                ].map(({ Icon, href, label, color }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={label}
+                    className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border text-sm font-medium hover:text-white transition ${color}`}
+                  >
+                    <Icon size={15} /> {label}
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
 
           <form

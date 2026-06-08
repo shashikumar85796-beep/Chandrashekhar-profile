@@ -46,9 +46,9 @@ function Index() {
         <Hero />
         <About />
         <Gallery />
-        <Research />
         <Awards />
         <Media />
+        <Research />
         <Contact />
       </main>
       <Footer />

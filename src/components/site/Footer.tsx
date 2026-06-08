@@ -1,4 +1,4 @@
-import { ArrowUp, MessageCircle, Youtube, FileText, Newspaper, Mail } from "lucide-react";
+import { ArrowUp, Youtube, Mail, Instagram, Linkedin, Facebook } from "lucide-react";
 import { professor } from "@/data/professor";
 
 const links = [
@@ -38,13 +38,12 @@ export function Footer() {
         </div>
         <div>
           <p className="uppercase tracking-[0.2em] text-xs text-gold mb-4">Connect</p>
-          <div className="flex gap-2 mb-4">
+          <div className="flex flex-wrap gap-2 mb-4">
             {[
-              { Icon: Mail, href: professor.social.email, label: "Email" },
-              { Icon: MessageCircle, href: professor.social.whatsapp, label: "WhatsApp" },
-              { Icon: Youtube, href: professor.social.youtube, label: "YouTube" },
-              { Icon: FileText, href: professor.social.springer, label: "Springer" },
-              { Icon: Newspaper, href: professor.social.jatit, label: "JATIT" },
+              { Icon: Youtube,   href: professor.social.youtube,   label: "YouTube" },
+              { Icon: Instagram, href: professor.social.instagram, label: "Instagram" },
+              { Icon: Linkedin,  href: professor.social.linkedin,  label: "LinkedIn" },
+              { Icon: Facebook,  href: professor.social.facebook,  label: "Facebook" },
             ].map(({ Icon, href, label }) => (
               <a
                 key={label}
@@ -61,6 +60,14 @@ export function Footer() {
           <a href={`mailto:${professor.email}`} className="inline-flex items-center gap-2 text-sm hover:text-gold transition">
             <Mail size={14} /> {professor.email}
           </a>
+          <div className="mt-2 flex flex-col gap-1">
+            <a href={`tel:${professor.phone}`} className="text-sm text-primary-foreground/70 hover:text-gold transition">
+              📞 {professor.phone}
+            </a>
+            <a href={`tel:${professor.phone2}`} className="text-sm text-primary-foreground/70 hover:text-gold transition">
+              📞 {professor.phone2}
+            </a>
+          </div>
         </div>
       </div>
       <div className="border-t border-white/10">

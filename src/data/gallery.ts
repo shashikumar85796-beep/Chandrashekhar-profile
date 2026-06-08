@@ -4,6 +4,9 @@ import dd2 from "@/assets/gallery/dd2.png";
 import dd3 from "@/assets/gallery/dd3.png";
 import dd4 from "@/assets/gallery/dd4.png";
 import dd5 from "@/assets/gallery/dd5.png";
+import dd6 from "@/assets/gallery/dd6.jpg";
+import dd7 from "@/assets/gallery/dd7.jpg";
+import dd8 from "@/assets/gallery/dd8.jpeg";
 
 export type GalleryImage = {
   src: string;
@@ -17,4 +20,7 @@ export const galleryImages: GalleryImage[] = [
   { src: dd3, caption: "Live on DD Prasar Bharati", tag: "Media" },
   { src: dd4, caption: "Education & Employment Advisory", tag: "Media" },
   { src: dd5, caption: "Shiksha Avam Rojgar — National Broadcast", tag: "Media" },
+  { src: dd6, caption: "Academic Session", tag: "Events" },
+  { src: dd7, caption: "Career Counselling Program", tag: "Events" },
+  { src: dd8, caption: "Educational Workshop", tag: "Events" },
 ];

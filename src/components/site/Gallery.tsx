@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { ChevronLeft, ChevronRight, X, ZoomIn } from "lucide-react";
 import { galleryImages, type GalleryImage } from "@/data/gallery";
 import { cn } from "@/lib/utils";
@@ -36,7 +36,6 @@ function Lightbox({
       className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm flex items-center justify-center"
       onClick={onClose}
     >
-      {/* Close */}
       <button
         onClick={onClose}
         className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/25 text-white grid place-items-center transition z-10"
@@ -45,7 +44,6 @@ function Lightbox({
         <X size={20} />
       </button>
 
-      {/* Prev */}
       {images.length > 1 && (
         <button
           onClick={(e) => { e.stopPropagation(); onPrev(); }}
@@ -56,7 +54,6 @@ function Lightbox({
         </button>
       )}
 
-      {/* Image */}
       <div
         className="max-w-5xl w-full px-20 flex flex-col items-center"
         onClick={(e) => e.stopPropagation()}
@@ -77,7 +74,6 @@ function Lightbox({
         </div>
       </div>
 
-      {/* Next */}
       {images.length > 1 && (
         <button
           onClick={(e) => { e.stopPropagation(); onNext(); }}
@@ -91,23 +87,52 @@ function Lightbox({
   );
 }
 
-// ─── Gallery Grid ──────────────────────────────────────────────────────────────
+// ─── Carousel ─────────────────────────────────────────────────────────────────
+const VISIBLE = 3; // cards visible at once on desktop
+
 export function Gallery() {
+  const [current, setCurrent] = useState(0);
   const [lightbox, setLightbox] = useState<number | null>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
   const images = galleryImages;
   const total = images.length;
+
+  // touch swipe support
+  const touchStartX = useRef<number | null>(null);
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) diff > 0 ? next() : prev();
+    touchStartX.current = null;
+  };
+
+  const prev = useCallback(() => setCurrent((c) => (c - 1 + total) % total), [total]);
+  const next = useCallback(() => setCurrent((c) => (c + 1) % total), [total]);
 
   const closeLightbox = useCallback(() => setLightbox(null), []);
   const prevLightbox = useCallback(
     () => setLightbox((i) => ((i ?? 0) - 1 + total) % total),
-    [total]
+    [total],
   );
   const nextLightbox = useCallback(
     () => setLightbox((i) => ((i ?? 0) + 1) % total),
-    [total]
+    [total],
   );
 
+  // auto-play
+  useEffect(() => {
+    if (lightbox !== null) return;
+    const id = setInterval(next, 4000);
+    return () => clearInterval(id);
+  }, [next, lightbox]);
+
   if (total === 0) return null;
+
+  // Build a sliding window: always show VISIBLE cards, looping
+  const visibleIndices = Array.from({ length: VISIBLE }, (_, i) => (current + i) % total);
 
   return (
     <section id="gallery" className="py-12 md:py-16 bg-muted/40">
@@ -120,33 +145,87 @@ export function Gallery() {
           </h2>
         </div>
 
-        {/* 3-column grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 reveal">
-          {images.map((img, i) => (
+        {/* Carousel */}
+        <div className="relative reveal">
+          {/* Prev button */}
+          <button
+            onClick={prev}
+            className="absolute -left-4 lg:-left-6 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-background border border-border shadow-lg hover:bg-gold hover:text-primary hover:border-gold transition grid place-items-center"
+            aria-label="Previous"
+          >
+            <ChevronLeft size={20} />
+          </button>
+
+          {/* Cards track */}
+          <div
+            ref={trackRef}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 px-2"
+            onTouchStart={onTouchStart}
+            onTouchEnd={onTouchEnd}
+          >
+            {visibleIndices.map((imgIdx, slot) => {
+              const img = images[imgIdx];
+              return (
+                <button
+                  key={`${slot}-${imgIdx}`}
+                  onClick={() => setLightbox(imgIdx)}
+                  className="group relative rounded-2xl overflow-hidden bg-muted border border-border card-soft focus:outline-none focus:ring-2 focus:ring-gold aspect-[4/3]"
+                  aria-label={`Open ${img.caption}`}
+                >
+                  <img
+                    src={img.src}
+                    alt={img.caption}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+
+                  {/* bottom caption bar */}
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent px-4 py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    {img.tag && (
+                      <span className="inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-gold text-primary mb-1">
+                        {img.tag}
+                      </span>
+                    )}
+                    <p className="text-white text-xs leading-snug">{img.caption}</p>
+                  </div>
+
+                  {/* Zoom overlay */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
+                  <div className="absolute inset-0 grid place-items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="w-12 h-12 rounded-full bg-gold text-primary grid place-items-center shadow-xl">
+                      <ZoomIn size={20} />
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Next button */}
+          <button
+            onClick={next}
+            className="absolute -right-4 lg:-right-6 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-background border border-border shadow-lg hover:bg-gold hover:text-primary hover:border-gold transition grid place-items-center"
+            aria-label="Next"
+          >
+            <ChevronRight size={20} />
+          </button>
+        </div>
+
+        {/* Dot indicators */}
+        <div className="flex justify-center gap-2 mt-6">
+          {images.map((_, i) => (
             <button
               key={i}
-              onClick={() => setLightbox(i)}
-              className="group relative rounded-2xl overflow-hidden bg-muted border border-border card-soft focus:outline-none focus:ring-2 focus:ring-gold"
-              aria-label={`Open ${img.caption}`}
-            >
-              <img
-                src={img.src}
-                alt={img.caption}
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
-              />
-
-              {/* Hover overlay */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300" />
-
-              {/* Zoom icon on hover */}
-              <div className="absolute inset-0 grid place-items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="w-12 h-12 rounded-full bg-gold text-primary grid place-items-center shadow-xl">
-                  <ZoomIn size={20} />
-                </div>
-              </div>
-            </button>
+              onClick={() => setCurrent(i)}
+              className={cn(
+                "rounded-full transition-all duration-300",
+                i === current
+                  ? "w-6 h-2 bg-gold"
+                  : "w-2 h-2 bg-border hover:bg-gold/50",
+              )}
+              aria-label={`Go to slide ${i + 1}`}
+            />
           ))}
         </div>
       </div>

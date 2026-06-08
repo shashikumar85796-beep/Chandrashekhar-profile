@@ -21,6 +21,7 @@ In addition to his academic and administrative responsibilities, he is associate
     "With a visionary approach towards educational transformation and student success, I continue to inspire institutions, educators, and students through leadership, strategic planning, academic excellence, and dedicated service to society.",
   email: "cshekharrajput@gmail.com",
   phone: "+91 8826252304",
+  phone2: "+91 9911458543",
   whatsappNumber: "918826252304",
   office: "BVBC, GGSIP University, Delhi",
   address: "BVBC, GGSIP University, Delhi",
@@ -30,9 +31,12 @@ In addition to his academic and administrative responsibilities, he is associate
     researchgate: "https://www.researchgate.net",
     springer: "https://link.springer.com/article/10.1007/s41870-025-02405-3",
     jatit: "https://www.jatit.org/",
-    youtube: "https://youtu.be/LDwy1OKb5Vw?si=EZ9zyn4rCMQn4xi4",
+    youtube: "https://www.youtube.com/@Dr.chandra_shekhar",
     whatsapp: "https://wa.me/918826252304",
     email: "mailto:cshekharrajput@gmail.com",
+    instagram: "https://www.instagram.com/prof_dr_chandra_shekhar/",
+    linkedin: "https://www.linkedin.com/in/prof-dr-chandra-shekhar-965757170/",
+    facebook: "https://www.facebook.com/Chandra.shekhar.1512",
   },
   stats: [
     { label: "Years of Experience", value: 20 },
@@ -193,7 +197,7 @@ export const awards: Award[] = [
 
 export const mediaAppearances = [
   {
-    outlet: "Doordarshan (DD India) — Prasar Bharati",
+    outlet: "Doordarshan (DD International) — Prasar Bharati",
     show: "DD Morning Live Show — Shiksha Avam Rojgar",
     role: "Career Advisor",
     description:

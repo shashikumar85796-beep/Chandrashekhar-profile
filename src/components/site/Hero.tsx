@@ -59,9 +59,6 @@ export function Hero() {
         </div>
 
         <div>
-          <p className="text-gold uppercase tracking-[0.3em] text-xs mb-4 opacity-0 animate-text-reveal" style={{ animationDelay: "0.1s" }}>
-            {professor.department}
-          </p>
           <h1 className="font-display font-semibold leading-[1.05] text-[44px] md:text-[52px] lg:text-[64px] opacity-0 animate-text-reveal" style={{ animationDelay: "0.3s" }}>
             {professor.name}
           </h1>

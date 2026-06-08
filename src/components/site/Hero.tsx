@@ -1,15 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { Mail } from "lucide-react";
-import professorImg from "@/assets/chandrashekhar photo.png";
+import professorImg from "@/assets/chandrashekhar photo.jpeg";
 import { professor } from "@/data/professor";
 import { useCountUp } from "./useReveal";
 
 function Stat({ value, label, run }: { value: number; label: string; run: boolean }) {
   const v = useCountUp(value, run);
+  const display = v >= 1000 ? `${(v / 1000).toFixed(v % 1000 === 0 ? 0 : 1)}K` : v.toLocaleString();
   return (
     <div className="text-center">
       <div className="font-display text-4xl md:text-5xl font-semibold text-gold">
-        {v.toLocaleString()}+
+        {display}+
       </div>
       <div className="mt-1 text-xs md:text-sm uppercase tracking-[0.18em] text-white/60">
         {label}

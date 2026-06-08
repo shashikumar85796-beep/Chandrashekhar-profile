@@ -1,5 +1,5 @@
 import { MapPin, GraduationCap, Building2, Phone, Mail } from "lucide-react";
-import professorImg from "@/assets/chandrashekhar photo.png";
+import professorImg from "@/assets/chandrashekhar photo.jpeg";
 import { professor } from "@/data/professor";
 
 export function About() {

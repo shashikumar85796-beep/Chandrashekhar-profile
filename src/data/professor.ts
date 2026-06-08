@@ -1,25 +1,29 @@
 export const professor = {
   name: "Dr. Chandra Shekhar",
   title: "Professor & In-Charge (Admissions)",
-  institution: "BHARATIYA VIDYA BHAVAN, KG Marg, Copernicus Marg, New Delhi, Delhi 110001",
+  institution: "BVBC, GGSIP University, Delhi",
   university: "Guru Gobind Singh Indraprastha University, Delhi",
   department: "Bharatiya Vidya Bhavan · New Delhi",
   tagline:
-    "Visionary academic leader in Big Data Analytics, Research Innovation, and Education Administration",
+    "Professor | Academic Administrator | Career Mentor | Motivational Speaker | Strategic Education Advisor",
   roleBadge: "सलाहकार – शिक्षा एवं रोजगार",
   roleBadgeEn: "Advisor – Education & Employment",
-  bio: `Dr. Chandra Shekhar is a distinguished Professor and In-Charge of Admissions at BHARATIYA VIDYA BHAVAN, KG Marg, Copernicus Marg, New Delhi, Delhi 110001, affiliated with Guru Gobind Singh Indraprastha University, Delhi. With over two decades of experience in higher education, he is a recognized leader in Big Data Analytics, Cybersecurity, Data Mining, and Academic Administration.
+  bio: `Prof. Dr. Chandra Shekhar is a distinguished academician, educational strategist, researcher, and administrator currently serving as Professor & In-Charge Admissions at BVBC, GGSIP University, Delhi. With extensive experience in higher education leadership, institutional development, academic administration, and student mentorship, he has established himself as a respected personality in the field of education and career guidance across India.
 
-A recipient of the prestigious Shiksha Ratna Award (2023) and the National Recognition Award (2024) — both presented by the Hon'ble Speaker of the Delhi Vidhan Sabha — Dr. Shekhar is also a Career Advisor for Door Darshan Prasar Bharati, hosting the nationally televised morning show "Shiksha Avam Rojgar," where he guides students and professionals on education and employment opportunities across India.
+He is widely recognized as a Career Mentor, Motivational Speaker, and Strategy Maker for universities and colleges, providing academic and administrative guidance to more than 50 colleges and universities throughout the country. More than 10,000 students have benefited from his academic counselling, career mentoring, and strategic educational guidance, helping them achieve success in their professional journeys.
 
-His research spans Apache Hadoop frameworks, encrypted voting systems, Big Data security, and political data analytics. He is committed to mentoring the next generation of engineers and researchers, building strong academic-industry bridges, and transforming educational institutions through strategic leadership and innovation.`,
+He is the Founder of GuidanceShiksha.com, a dedicated educational guidance platform established to support students and aspirants in selecting the right academic path and building a successful career journey through proper counselling and mentorship. He has also served as the Former Director of DITM College, affiliated with GGSIP University, Delhi, where he played an important role in institutional growth, academic excellence, and student development.
+
+As an active researcher and academic contributor, he has published more than 20 research papers in reputed National and International Journals in the fields of education, management, career development, and academic administration. He has actively participated in 18+ National and International Conferences, Seminars, Workshops, and Academic Programs, sharing his expertise and research insights with the academic community.
+
+In addition to his academic and administrative responsibilities, he is associated as an Advisor – Shiksha & Rozgar with DD National and DD Morning Show, Prasar Bharati, contributing towards educational awareness, career counselling, and youth empowerment initiatives. With a visionary approach towards educational transformation and student success, Prof. Dr. Chandra Shekhar continues to inspire institutions, educators, and students through leadership, strategic planning, and dedicated service to society.`,
   pullQuote:
-    "Dedicated to fostering student-centric learning, promoting research excellence, and empowering teams through integrity, innovation, and purposeful leadership.",
+    "With a visionary approach towards educational transformation and student success, I continue to inspire institutions, educators, and students through leadership, strategic planning, academic excellence, and dedicated service to society.",
   email: "cshekharrajput@gmail.com",
   phone: "+91 8826252304",
   whatsappNumber: "918826252304",
-  office: "Bharatiya Vidya Bhavan, New Delhi",
-  address: "BHARATIYA VIDYA BHAVAN, KG Marg, Copernicus Marg, New Delhi, Delhi 110001",
+  office: "BVBC, GGSIP University, Delhi",
+  address: "BVBC, GGSIP University, Delhi",
   role: "Professor & In-Charge (Admissions)",
   social: {
     scholar: "https://scholar.google.com",
@@ -32,8 +36,8 @@ His research spans Apache Hadoop frameworks, encrypted voting systems, Big Data 
   },
   stats: [
     { label: "Years of Experience", value: 20 },
-    { label: "Research Publications", value: 6 },
-    { label: "National Awards", value: 2 },
+    { label: "Research Publications", value: 20 },
+    { label: "Students Mentored", value: 10000 },
   ],
   interests: [
     "Big Data Analytics",
@@ -168,6 +172,13 @@ export const awards: Award[] = [
     org: "National Recognition Forum · Field: Education",
     desc: "Presented by the Hon'ble Speaker of the Delhi Vidhan Sabha, Shri Ram Nivas, Government of Delhi.",
     presentedBy: "Hon'ble Speaker of the Delhi Vidhan Sabha",
+    kind: "award",
+  },
+  {
+    year: "Past",
+    name: "Shiksha Samman Award",
+    org: "National Recognition Forum · Field: Education",
+    desc: "Awarded in recognition of outstanding contribution to the field of education, leadership, and academic service to society.",
     kind: "award",
   },
   {

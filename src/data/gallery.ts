@@ -7,6 +7,8 @@ import dd5 from "@/assets/gallery/dd5.png";
 import dd6 from "@/assets/gallery/dd6.jpg";
 import dd7 from "@/assets/gallery/dd7.jpg";
 import dd8 from "@/assets/gallery/dd8.jpeg";
+import dd9 from "@/assets/gallery/dd9.jpeg";
+import dd10 from "@/assets/gallery/dd10.png";
 
 export type GalleryImage = {
   src: string;
@@ -23,4 +25,6 @@ export const galleryImages: GalleryImage[] = [
   { src: dd6, caption: "Academic Session", tag: "Events" },
   { src: dd7, caption: "Career Counselling Program", tag: "Events" },
   { src: dd8, caption: "Educational Workshop", tag: "Events" },
+  { src: dd9, caption: "Academic Program", tag: "Events" },
+  { src: dd10, caption: "Educational Event", tag: "Events" },
 ];

@@ -70,15 +70,7 @@ export function Navbar() {
         )}
       >
         <nav className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
-          <button
-            onClick={() => go("home")}
-            className={cn(
-              "font-display text-lg font-semibold tracking-tight transition-colors",
-              scrolled ? "text-foreground" : "text-white",
-            )}
-          >
-            Dr. Chandra Shekhar
-          </button>
+          <div />
 
           <ul className="hidden lg:flex items-center gap-8">
             {sections.map((s) => (

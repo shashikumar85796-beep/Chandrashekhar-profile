@@ -36,7 +36,7 @@ In addition to his academic and administrative responsibilities, he is associate
     email: "mailto:cshekharrajput@gmail.com",
     instagram: "https://www.instagram.com/prof_dr_chandra_shekhar/",
     linkedin: "https://www.linkedin.com/in/prof-dr-chandra-shekhar-965757170/",
-    facebook: "https://www.facebook.com/Chandra.shekhar.1512",
+    facebook: "https://www.facebook.com/prof.dr.chandrashekhar/",
   },
   stats: [
     { label: "Years of Experience", value: 20 },

@@ -53,9 +53,7 @@ export function Hero() {
               fetchPriority="high"
             />
           </div>
-          <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap px-4 py-1.5 rounded-full bg-gold text-sm font-semibold text-primary tracking-wide">
-            Dr. Chandra Shekhar
-          </span>
+          
         </div>
 
         <div>

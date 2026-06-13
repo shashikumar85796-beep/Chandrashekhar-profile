@@ -1,5 +1,5 @@
 export const professor = {
-  name: "Dr. Chandra Shekhar",
+  name: "Prof. Dr. Chandra Shekhar",
   title: "Professor & In-Charge (Admissions)",
   institution: "BVBC, GGSIP University, Delhi",
   university: "Guru Gobind Singh Indraprastha University, Delhi",

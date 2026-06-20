@@ -60,6 +60,9 @@ export function Footer() {
           <a href={`mailto:${professor.email}`} className="inline-flex items-center gap-2 text-sm hover:text-gold transition">
             <Mail size={14} /> {professor.email}
           </a>
+          <a href="mailto:info@prof-chandrashekhar.com" className="inline-flex items-center gap-2 text-sm hover:text-gold transition mt-1">
+            <Mail size={14} /> info@prof-chandrashekhar.com
+          </a>
           <div className="mt-2 flex flex-col gap-1">
             <a href={`tel:${professor.phone}`} className="text-sm text-primary-foreground/70 hover:text-gold transition">
               📞 {professor.phone}

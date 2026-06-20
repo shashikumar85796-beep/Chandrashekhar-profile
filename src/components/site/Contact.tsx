@@ -193,6 +193,33 @@ export function Contact() {
             </p>
           </form>
         </div>
+
+        {/* Website Management Section */}
+        <div className="mt-12 reveal border-t border-border pt-10">
+          <div className="card-soft bg-card border border-border p-6 md:p-8">
+            <h3 className="font-display text-lg font-semibold mb-4 flex items-center gap-2">
+              <Building2 size={18} className="text-gold" /> Website Management
+            </h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+              This website is officially managed by{" "}
+              <span className="font-semibold text-foreground">GIPSM Technology India Private Limited</span>{" "}
+              on behalf of {professor.name}.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-4 text-sm">
+              <div>
+                <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">For website-related support</p>
+                <a href="mailto:info@prof-chandrashekhar.com" className="flex items-center gap-2 font-medium hover:text-gold transition">
+                  <Mail size={14} className="text-gold" /> info@prof-chandrashekhar.com
+                </a>
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Company</p>
+                <p className="font-medium text-foreground">GIPSM Technology India Private Limited</p>
+                <p className="text-muted-foreground text-xs mt-0.5">GSTIN: 07AAHCG9141N2Z3</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

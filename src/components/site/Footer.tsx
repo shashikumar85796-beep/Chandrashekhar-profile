@@ -71,14 +71,25 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10">
+        {/* Official site notice */}
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-5 border-b border-white/10">
+          <p className="text-xs text-primary-foreground/50 text-center leading-relaxed">
+            Official website of {professor.name}, managed and maintained by{" "}
+            <span className="text-primary-foreground/70 font-medium">GIPSM Technology India Private Limited</span>.
+            {" "}GSTIN: <span className="text-primary-foreground/70">07AAHCG9141N2Z3</span>
+          </p>
+        </div>
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-primary-foreground/60">
           <p>© {year >= 2025 ? year : 2025} {professor.name}. All rights reserved.</p>
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/15 hover:bg-gold hover:text-primary hover:border-gold transition"
-          >
-            Back to top <ArrowUp size={12} />
-          </button>
+          <div className="flex items-center gap-4">
+            <a href="/privacy-policy" className="hover:text-gold transition">Privacy Policy</a>
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/15 hover:bg-gold hover:text-primary hover:border-gold transition"
+            >
+              Back to top <ArrowUp size={12} />
+            </button>
+          </div>
         </div>
       </div>
     </footer>

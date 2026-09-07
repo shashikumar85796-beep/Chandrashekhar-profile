@@ -66,7 +66,7 @@ export function Navbar() {
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           scrolled
             ? "bg-background/90 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.06)] border-b border-border"
-            : "bg-transparent",
+            : "bg-white/90 backdrop-blur-sm border-b border-[#E8EEF6]",
         )}
       >
         <nav className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
@@ -79,7 +79,7 @@ export function Navbar() {
                   onClick={() => go(s.id)}
                   className={cn(
                     "text-sm font-medium relative transition-colors",
-                    scrolled ? "text-foreground/80 hover:text-foreground" : "text-white/80 hover:text-white",
+                    "text-[#102A56]/80 hover:text-[#102A56]",
                     active === s.id && "text-gold!",
                   )}
                 >
@@ -97,7 +97,7 @@ export function Navbar() {
             aria-label="Open menu"
             className={cn(
               "lg:hidden p-2 rounded-full hover:bg-foreground/10 transition",
-              scrolled ? "text-foreground" : "text-white",
+              "text-[#102A56]",
             )}
           >
             {open ? <X size={20} /> : <Menu size={20} />}

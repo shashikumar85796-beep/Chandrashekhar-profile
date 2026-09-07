@@ -1,18 +1,31 @@
-import { useEffect, useRef, useState } from "react";
-import { Mail } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowDown, ArrowUpRight, MessageCircle } from "lucide-react";
 import professorImg from "@/assets/chandrashekhar photo.jpeg";
 import { professor } from "@/data/professor";
 import { useCountUp } from "./useReveal";
 
-function Stat({ value, label, run }: { value: number; label: string; run: boolean }) {
+function Stat({
+  value,
+  label,
+  run,
+  className = "",
+}: {
+  value: number;
+  label: string;
+  run: boolean;
+  className?: string;
+}) {
   const v = useCountUp(value, run);
   const display = v >= 1000 ? `${(v / 1000).toFixed(v % 1000 === 0 ? 0 : 1)}K` : v.toLocaleString();
   return (
-    <div className="text-center">
-      <div className="font-display text-4xl md:text-5xl font-semibold text-gold">
-        {display}+
+    <div
+      className={`rounded-xl border border-[#D9E1EC] bg-white/95 px-4 py-3 shadow-[0_12px_30px_rgba(16,42,86,0.10)] backdrop-blur-sm ${className}`}
+    >
+      <div className="font-display text-2xl font-semibold leading-none text-[#102A56]">
+        {display}
+        <span className="text-[#F28C28]">+</span>
       </div>
-      <div className="mt-1 text-xs md:text-sm uppercase tracking-[0.18em] text-white/60">
+      <div className="mt-1.5 max-w-[10rem] text-[10px] font-semibold uppercase leading-tight tracking-[0.13em] text-[#64748B]">
         {label}
       </div>
     </div>
@@ -20,82 +33,124 @@ function Stat({ value, label, run }: { value: number; label: string; run: boolea
 }
 
 export function Hero() {
-  const ref = useRef<HTMLDivElement>(null);
   const [run, setRun] = useState(false);
   useEffect(() => {
-    const t = setTimeout(() => setRun(true), 600);
-    return () => clearTimeout(t);
+    const timer = setTimeout(() => setRun(true), 600);
+    return () => clearTimeout(timer);
   }, []);
   return (
     <section
       id="home"
-      ref={ref}
-      className="hero-gradient relative min-h-screen flex items-center pt-20 pb-12 text-white overflow-hidden"
+      className="relative isolate flex min-h-screen items-center overflow-hidden bg-white pb-16 pt-28 text-[#102A56] sm:pt-32"
     >
-      <div className="absolute inset-0 opacity-[0.06] pointer-events-none"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
-          backgroundSize: "32px 32px",
-        }}
-      />
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-[linear-gradient(115deg,transparent_0%,transparent_54%,#F7F9FC_54%,#F7F9FC_100%)]" />
+      <div className="pointer-events-none absolute -top-20 right-[11%] -z-10 h-[38rem] w-px rotate-[25deg] bg-[#E8EEF6]" />
+      <div className="pointer-events-none absolute bottom-12 left-[7%] -z-10 h-px w-[44%] bg-[#E8EEF6]" />
+      <div className="pointer-events-none absolute right-[3%] top-28 -z-10 font-display text-[clamp(5rem,15vw,13rem)] font-semibold leading-none tracking-[-0.06em] text-[#EDF2F8]">
+        ACADEMIA
+      </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-[auto_1fr] gap-12 lg:gap-16 items-center w-full">
-        <div className="relative mx-auto lg:mx-0">
-          <div className="absolute -inset-3 rounded-full bg-gold/20 blur-2xl" />
-          <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden ring-4 ring-white/10 shadow-2xl">
-            <img
-              src={professorImg}
-              alt="Dr. Chandra Shekhar — Professor at Bharatiya Vidya Bhavan, New Delhi"
-              className="w-full h-full object-cover"
-              width={512}
-              height={512}
-              fetchPriority="high"
-            />
-          </div>
-          
-        </div>
-
-        <div>
-          <h1 className="font-display font-semibold leading-[1.05] text-[44px] md:text-[52px] lg:text-[64px] opacity-0 animate-text-reveal" style={{ animationDelay: "0.3s" }}>
-            {professor.name}
+      <div className="relative mx-auto grid w-full max-w-7xl items-center gap-14 px-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10 lg:px-10">
+        <div className="max-w-2xl">
+          <p
+            className="mb-5 text-[10px] font-bold uppercase tracking-[0.24em] text-[#F28C28] opacity-0 animate-text-reveal sm:text-xs"
+            style={{ animationDelay: "0.15s" }}
+          >
+            Professor <span className="mx-1 text-[#CBD5E1]">&bull;</span> Academic Administrator{" "}
+            <span className="mx-1 text-[#CBD5E1]">&bull;</span> Mentor
+          </p>
+          <h1
+            className="font-display text-[clamp(3.35rem,7vw,6.6rem)] font-semibold leading-[0.92] tracking-[-0.04em] text-[#102A56] opacity-0 animate-text-reveal"
+            style={{ animationDelay: "0.3s" }}
+          >
+            <span className="block text-[0.46em] leading-[1.1] tracking-[-0.01em] text-[#64748B]">
+              Prof. Dr.
+            </span>
+            <span className="block">Chandra Shekhar</span>
           </h1>
-          <p className="mt-4 text-lg md:text-xl text-white/80 opacity-0 animate-text-reveal" style={{ animationDelay: "0.5s" }}>
-            {professor.title} · <span className="text-white">{professor.institution}</span>
-          </p>
-          <p className="mt-1 text-sm text-white/60 opacity-0 animate-text-reveal" style={{ animationDelay: "0.6s" }}>
-            {professor.university}
-          </p>
-          <p className="mt-3 italic text-white/70 max-w-2xl text-base md:text-lg opacity-0 animate-text-reveal" style={{ animationDelay: "0.7s" }}>
-            &ldquo;{professor.tagline}&rdquo;
-          </p>
-
-          <div className="mt-8 grid grid-cols-3 gap-6 max-w-lg opacity-0 animate-text-reveal" style={{ animationDelay: "0.9s" }}>
-            {professor.stats.map((s) => (
-              <Stat key={s.label} value={s.value} label={s.label} run={run} />
-            ))}
+          <div
+            className="mt-7 max-w-xl border-l-2 border-[#F28C28] pl-5 opacity-0 animate-text-reveal"
+            style={{ animationDelay: "0.5s" }}
+          >
+            <p className="text-base font-semibold leading-snug text-[#102A56] sm:text-lg">
+              {professor.title}
+            </p>
+            <p className="mt-1 text-sm leading-relaxed text-[#64748B] sm:text-base">
+              Bharatiya Vidya Bhavan College, GGSIP University, Delhi
+            </p>
           </div>
+          <p
+            className="mt-7 max-w-md font-display text-xl leading-snug text-[#102A56] opacity-0 animate-text-reveal sm:text-2xl"
+            style={{ animationDelay: "0.65s" }}
+          >
+            Shaping careers through education, mentorship &amp; academic leadership.
+          </p>
 
-          <div className="mt-10 flex flex-wrap gap-3 opacity-0 animate-text-reveal" style={{ animationDelay: "1.1s" }}>
+          <div
+            className="mt-9 flex flex-wrap gap-3 opacity-0 animate-text-reveal"
+            style={{ animationDelay: "0.85s" }}
+          >
             <a
               href={professor.social.whatsapp}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-[#25D366] hover:bg-[#1EBE57] text-white px-6 py-3 text-sm font-semibold hover:scale-[1.03] transition-transform shadow-lg shadow-green-900/30"
+              className="inline-flex items-center gap-2 rounded-md bg-[#F28C28] px-5 py-3 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(242,140,40,0.22)] transition-transform hover:-translate-y-0.5 hover:bg-[#dc7918]"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-              </svg>
-              Send Message
+              <MessageCircle size={16} /> Connect on WhatsApp <ArrowUpRight size={15} />
             </a>
             <button
-              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-              className="inline-flex items-center gap-2 rounded-full border border-white/30 px-6 py-3 text-sm font-semibold hover:bg-white/10 hover:scale-[1.03] transition"
+              onClick={() =>
+                document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })
+              }
+              className="inline-flex items-center gap-2 rounded-md border border-[#102A56] bg-white px-5 py-3 text-sm font-semibold text-[#102A56] transition-colors hover:bg-[#F7F9FC]"
             >
-              <Mail size={16} /> Get in Touch
+              Explore Profile <ArrowUpRight size={15} />
             </button>
           </div>
+
+          <div className="mt-12 hidden items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#64748B] sm:flex">
+            <span>20+ Years Experience</span>
+            <span className="text-[#CBD5E1]">|</span>
+            <span>20+ Research Publications</span>
+            <span className="text-[#CBD5E1]">|</span>
+            <span>10K+ Students Mentored</span>
+          </div>
         </div>
+
+        <div className="relative mx-auto w-full max-w-[31rem] lg:mx-0 lg:ml-auto">
+          <div className="mb-4 flex items-center justify-end gap-3 pr-2 text-[10px] font-bold uppercase tracking-[0.22em] text-[#64748B]">
+            <span className="h-px w-10 bg-[#F28C28]" /> Faculty Profile{" "}
+            <span className="text-[#CBD5E1]">/</span> Delhi
+          </div>
+          <div className="absolute -bottom-5 -left-5 h-[88%] w-[88%] border border-[#F28C28] sm:-bottom-7 sm:-left-7" />
+          <div
+            className="relative mx-auto aspect-[4/5] w-[min(78vw,28rem)] overflow-hidden rounded-[20px] bg-[#EAF0F7] shadow-[0_22px_50px_rgba(16,42,86,0.16)] opacity-0 animate-text-reveal"
+            style={{ animationDelay: "0.45s" }}
+          >
+            <img
+              src={professorImg}
+              alt="Dr. Chandra Shekhar - Professor at Bharatiya Vidya Bhavan, New Delhi"
+              className="h-full w-full object-cover object-[center_18%] transition-transform duration-700 hover:scale-[1.025]"
+              width={800}
+              height={1000}
+              fetchPriority="high"
+            />
+          </div>
+          <div className="absolute -bottom-7 left-0 right-0 flex justify-center gap-2 sm:-left-12 sm:right-auto sm:bottom-8 sm:flex-col sm:items-start">
+            {professor.stats.map((stat, index) => (
+              <Stat
+                key={stat.label}
+                value={stat.value}
+                label={stat.label}
+                run={run}
+                className={`opacity-0 animate-text-reveal ${index === 1 ? "hidden sm:block" : ""}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[#CBD5E1] sm:hidden">
+        <ArrowDown size={18} />
       </div>
     </section>
   );

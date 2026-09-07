@@ -9,6 +9,12 @@ import dd7 from "@/assets/gallery/dd7.jpg";
 import dd8 from "@/assets/gallery/dd8.jpeg";
 import dd9 from "@/assets/gallery/dd9.jpeg";
 import dd10 from "@/assets/gallery/dd10.png";
+import air from "@/assets/gallery/air.jpg";
+import air1 from "@/assets/gallery/air1.jpg";
+import air2 from "@/assets/gallery/air2.jpg";
+import air3 from "@/assets/gallery/air3.jpg";
+import air4 from "@/assets/gallery/air4.jpg";
+import air5 from "@/assets/gallery/air5.jpg";
 
 export type GalleryImage = {
   src: string;
@@ -17,6 +23,12 @@ export type GalleryImage = {
 };
 
 export const galleryImages: GalleryImage[] = [
+  { src: air, caption: "AIR Radio Programme", tag: "Media" },
+  { src: air1, caption: "All India Radio Interview", tag: "Media" },
+  { src: air2, caption: "AIR Education Discussion", tag: "Media" },
+  { src: air3, caption: "All India Radio Session", tag: "Media" },
+  { src: air4, caption: "AIR Expert Talk", tag: "Media" },
+  { src: air5, caption: "All India Radio Programme", tag: "Media" },
   { src: dd1, caption: "DD Morning Live Show — Shiksha Avam Rojgar", tag: "Media" },
   { src: dd2, caption: "Career Guidance Session on Doordarshan", tag: "Media" },
   { src: dd3, caption: "Live on DD Prasar Bharati", tag: "Media" },
